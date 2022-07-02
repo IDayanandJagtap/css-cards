@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+
+:root{
+    /* fonts */
+    --font-heading: 2rem;
+    --font-sub-heading: 1rem;
+    --font-list-items: .9rem;
+    --font-check-list:1.4rem;
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+
+    /* Color */
+    --first-color: hsl(210,97%,67%,1);
+    --first-color-alt: hsl(210,96%,59%,1);
+    --subtitle-color: hsl(0,0%,80%,1);
+    --container-color: hsl(0,0%,85%,1);
+    --container-color-alt : hsl(0,0%,93%,1);
+    --card-color: #fff;
+
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ************************************** CONTAINER *************************** */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 768px;
+    overflow: scroll;
+    background: linear-gradient(to bottom right, var(--container-color), var(--container-color-alt));
+}
+.card__container{
+    width: 95%;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit,minmax(300px, 1fr)); */
+     
+    gap: 2rem 1.2rem;
+    padding: 3rem 0;
+    margin: 0 3rem;
+    justify-content: center;
+}
+
+
+/* ************************************** CARD ******************************** */
+.card{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    position: relative;
+    background-color: var(--card-color);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    justify-content: space-between;
+}
+.card__price-tag{
+    position: absolute;
+    background:linear-gradient( to bottom, var(--first-color), var(--first-color-alt));
+    padding: .4rem 0;
+    color: white;
+    text-align: center;
+    height: 65px;
+    width: 50px;
+    right: 1rem;
+    top:-17px;
+    font-family: var(--font-body);
+}
+.card__price-tag::before{
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    background-color: hsl(212, 100%, 50%);
+    left: -17px;
+    top: 0;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.card__price-tag::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    left: 0;
+    bottom: -16px;
+    clip-path: polygon(50% 0%, 100% 50%, 0% 50%, 0 50%);
+}
+.card__price span{
+    font-size: 1rem;
+}
+.card__plan-valid{
+    font-size: .6rem;
+}
+.card__img-circle{
+    width: 40px;
+    height: 40px;
+    background-color: var(--container-color-alt);
+    border-radius: 50%;
+    display: flex;
+    place-items: center;
+    
+}
+.card__img{
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+.card__plan-type{
+    color: var(--subtitle-color);
+    font-family: var(--font-title);
+    font-weight: 500;
+    font-size: var(--font-sub-heading);
+    text-transform: uppercase;
+}
+.card__plan-name{
+    font-family: var(--font-title);
+    font-size: var(--font-heading);
+}
+
+.card__benefit-list{
+    list-style: none;
+
+}
+.card__list-item {
+    font-family: var(--font-body);
+    padding: .4rem 0;
+}
+.card__list-item i{
+    color: var(--first-color);
+    font-size: var(--font-check-list);
+    font-weight: 500;
+    padding: 0 .2rem 0 0;
+}
+.card__list-item span{
+    font-size: var(--font-list-items);
+}
+.card__button{
+    margin: .2rem 0 0 0;
+    padding: 1rem 0;
+    width: 100%;
+    background: linear-gradient(to right , var(--first-color), var(--first-color-alt));
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    color: white;
+    cursor: pointer;
+}
+.card__button:hover{
+    box-shadow: 0 12px 24px hsla(210, 97%, 54%, 0.2);
+}
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MEDIA QUERIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+@media screen and (min-width:1024px) { 
+    .card__container{
+        grid-template-columns: repeat(3,320px);
+    }
+}
+@media screen and (max-width:1024px) {
+    .card__container{
+        grid-template-columns: repeat(auto-fit, 320px);
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    :root{
+        --font-heading: 1.5rem;
+    --font-sub-heading: .6rem;
+    --font-list-items: .7rem;
+    --font-check-list: 1rem;
+    }
+    .card__container{
+        grid-template-columns: repeat(auto-fit, 40%);
+    }
+}
+@media screen and (max-width:668px) {
+    :root{
+        --font-heading: 1.7rem;
+    --font-sub-heading: .8rem;
+    --font-list-items: .8rem;
+    --font-check-list: 1rem;
+    }
+    .card__container{
+        grid-template-columns: repeat(auto-fit, 100%);
+    }
+}
+@media screen and (min-width:468px) and (max-width:668px) {
+    .card__container{
+        grid-template-columns: repeat(auto-fit,70%);
+    }
+} 
